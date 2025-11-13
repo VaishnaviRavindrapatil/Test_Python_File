@@ -18,3 +18,7 @@ def convert_to_uppercase(input_string: str) -> str:
 
 def convert_to_lowercase(input_string: str) -> str:
     return input_string.lower()
+
+
+def add_special_character(input_string: str, special_char: str) -> str:
+    return f"{input_string}{special_char}"
