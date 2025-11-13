@@ -10,3 +10,7 @@ def is_palindrome(s):
 
 def is_anagram(str1: str, str2: str) -> bool:
     return sorted(str1) == sorted(str2)
+
+
+def convert_to_uppercase(input_string: str) -> str:
+    return input_string.upper()
