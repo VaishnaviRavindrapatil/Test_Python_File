@@ -1,40 +1,24 @@
 import unittest
-from Strings import convert_to_uppercase
+from Strings import convert_to_lowercase
 
-class TestConvertToUppercase(unittest.TestCase):
+class TestConvertToLowercase(unittest.TestCase):
 
-    def test_valid_lowercase_string(self):
-        self.assertEqual(convert_to_uppercase("hello"), "HELLO")
+    def test_valid_lowercase_conversion(self):
+        self.assertEqual(convert_to_lowercase("HELLO"), "hello")
+        self.assertEqual(convert_to_lowercase("Hello World"), "hello world")
+        self.assertEqual(convert_to_lowercase("123ABC"), "123abc")
+        self.assertEqual(convert_to_lowercase(""), "")
+        self.assertEqual(convert_to_lowercase("already lowercase"), "already lowercase")
 
-    def test_valid_mixedcase_string(self):
-        self.assertEqual(convert_to_uppercase("HeLLo"), "HELLO")
-
-    def test_valid_uppercase_string(self):
-        self.assertEqual(convert_to_uppercase("HELLO"), "HELLO")
-
-    def test_empty_string(self):
-        self.assertEqual(convert_to_uppercase(""), "")
-
-    def test_string_with_numbers(self):
-        self.assertEqual(convert_to_uppercase("hello123"), "HELLO123")
-
-    def test_string_with_special_characters(self):
-        self.assertEqual(convert_to_uppercase("hello!@#"), "HELLO!@#")
-
-    def test_string_with_whitespace(self):
-        self.assertEqual(convert_to_uppercase("hello world"), "HELLO WORLD")
-
-    def test_numeric_input(self):
+    def test_invalid_inputs(self):
         with self.assertRaises(TypeError):
-            convert_to_uppercase(12345)
-
-    def test_none_input(self):
+            convert_to_lowercase(None)
         with self.assertRaises(TypeError):
-            convert_to_uppercase(None)
-
-    def test_list_input(self):
+            convert_to_lowercase(12345)
         with self.assertRaises(TypeError):
-            convert_to_uppercase(["hello", "world"])
+            convert_to_lowercase(["HELLO", "WORLD"])
+        with self.assertRaises(TypeError):
+            convert_to_lowercase({"key": "value"})
 
 if __name__ == "__main__":
     unittest.main()

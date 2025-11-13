@@ -14,3 +14,7 @@ def is_anagram(str1: str, str2: str) -> bool:
 
 def convert_to_uppercase(input_string: str) -> str:
     return input_string.upper()
+
+
+def convert_to_lowercase(input_string: str) -> str:
+    return input_string.lower()
