@@ -14,3 +14,7 @@ def calculate_circle_perimeter(radius):
     if radius < 0:
         raise ValueError("Radius cannot be negative")
     return 2 * 3.141592653589793 * radius
+
+
+def calculate_rectangle_perimeter(length, width):
+    return 2 * (length + width)
