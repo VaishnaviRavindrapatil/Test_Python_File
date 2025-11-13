@@ -1,31 +1,34 @@
 import unittest
-from Geometry import calculate_square_area
+from Geometry import calculate_circle_perimeter
+import math
 
+class TestCalculateCirclePerimeter(unittest.TestCase):
 
+    def test_valid_radius(self):
+        # Test with a positive radius
+        self.assertAlmostEqual(calculate_circle_perimeter(1), 2 * math.pi * 1)
+        self.assertAlmostEqual(calculate_circle_perimeter(5), 2 * math.pi * 5)
+        self.assertAlmostEqual(calculate_circle_perimeter(10.5), 2 * math.pi * 10.5)
 
-class TestCalculate_square_area(unittest.TestCase):
-    def test_calculate_square_area_valid_input():
-        result = Geometry.calculate_square_area(4)
-        assert result == 16
-    def test_calculate_square_area_zero_input():
-        result = Geometry.calculate_square_area(0)
-        assert result == 0
-    def test_calculate_square_area_negative_input():
-        try:
-            Geometry.calculate_square_area(-5)
-        except ValueError as e:
-            assert str(e) == "Side length cannot be negative"
-    def test_calculate_square_area_non_numeric_input():
-        try:
-            Geometry.calculate_square_area("abc")
-        except TypeError as e:
-            assert str(e) == "Side length must be a numeric value"
-    def test_calculate_square_area_float_input():
-        result = Geometry.calculate_square_area(3.5)
-        assert result == 12.25
-    def test_calculate_square_area_large_input():
-        result = Geometry.calculate_square_area(100000)
-        assert result == 10000000000
+    def test_zero_radius(self):
+        # Test with a radius of zero
+        self.assertEqual(calculate_circle_perimeter(0), 0)
 
-if __name__ == '__main__':
+    def test_negative_radius(self):
+        # Test with a negative radius (should raise ValueError)
+        with self.assertRaises(ValueError):
+            calculate_circle_perimeter(-1)
+
+    def test_invalid_type(self):
+        # Test with invalid types for radius
+        with self.assertRaises(TypeError):
+            calculate_circle_perimeter("string")
+        with self.assertRaises(TypeError):
+            calculate_circle_perimeter(None)
+        with self.assertRaises(TypeError):
+            calculate_circle_perimeter([1, 2, 3])
+        with self.assertRaises(TypeError):
+            calculate_circle_perimeter({"radius": 5})
+
+if __name__ == "__main__":
     unittest.main()
