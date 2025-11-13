@@ -32,3 +32,53 @@ class TestCalculateCirclePerimeter(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ---- Auto-generated tests ----
+import unittest
+from Geometry import calculate_rectangle_perimeter
+
+class TestCalculateRectanglePerimeter(unittest.TestCase):
+
+    def test_valid_perimeter(self):
+        # Test with valid positive integers
+        self.assertEqual(calculate_rectangle_perimeter(5, 10), 30)
+        self.assertEqual(calculate_rectangle_perimeter(7, 3), 20)
+        self.assertEqual(calculate_rectangle_perimeter(0, 0), 0)
+        self.assertEqual(calculate_rectangle_perimeter(1, 1), 4)
+
+        # Test with valid positive floats
+        self.assertAlmostEqual(calculate_rectangle_perimeter(5.5, 10.2), 31.4)
+        self.assertAlmostEqual(calculate_rectangle_perimeter(7.1, 3.3), 20.8)
+
+    def test_negative_dimensions(self):
+        # Test with negative dimensions
+        with self.assertRaises(ValueError):
+            calculate_rectangle_perimeter(-5, 10)
+        with self.assertRaises(ValueError):
+            calculate_rectangle_perimeter(5, -10)
+        with self.assertRaises(ValueError):
+            calculate_rectangle_perimeter(-5, -10)
+
+    def test_non_numeric_inputs(self):
+        # Test with non-numeric inputs
+        with self.assertRaises(TypeError):
+            calculate_rectangle_perimeter("5", 10)
+        with self.assertRaises(TypeError):
+            calculate_rectangle_perimeter(5, "10")
+        with self.assertRaises(TypeError):
+            calculate_rectangle_perimeter("5", "10")
+        with self.assertRaises(TypeError):
+            calculate_rectangle_perimeter(None, 10)
+        with self.assertRaises(TypeError):
+            calculate_rectangle_perimeter(5, None)
+
+    def test_missing_arguments(self):
+        # Test with missing arguments
+        with self.assertRaises(TypeError):
+            calculate_rectangle_perimeter(5)
+        with self.assertRaises(TypeError):
+            calculate_rectangle_perimeter()
+
+if __name__ == '__main__':
+    unittest.main()
